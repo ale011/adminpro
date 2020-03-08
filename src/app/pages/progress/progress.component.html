@@ -1,1 +1,49 @@
-<p>progress works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                progress1: {{progress1}}<br>
+                progress2: {{progress2}}
+                <h4 class="card-title">Progress bar example</h4>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated"
+                        role="progressbar"
+                        [attr.ariaValuenow]="progress1"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        [style.width]="progress1 + '%'">
+                    </div>
+                </div>
+                <br>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated"
+                        role="progressbar"
+                        [attr.ariaValuenow]="progress2"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        [style.width]="progress2 + '%'">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <app-incrementer (valueChange)="progress1 = $event" [label]="'esto es el label'" [progress]="progress1"></app-incrementer>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <app-incrementer (valueChange)="progress2 = $event" [label]="'esto es otro label'" [progress]="progress2"></app-incrementer>
+            </div>
+        </div>
+    </div>
+</div>
