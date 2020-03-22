@@ -10,6 +10,8 @@ import { ChartsModule } from 'ng2-charts';
 // @todo: luego borrar
 import { IncrementerComponent } from '../custom/incrementer/incrementer.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PromisesComponent } from './promises/promises.component';
+import { RxjsComponent } from './rxjs.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +20,9 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
         ProgressComponent,
         Graficas1Component,
         IncrementerComponent,
-        AccountSettingsComponent
+        AccountSettingsComponent,
+        PromisesComponent,
+        RxjsComponent
     ],
     exports: [
         DashboardComponent,
