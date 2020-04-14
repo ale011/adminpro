@@ -33,39 +33,26 @@ export class RxjsComponent implements OnInit, OnDestroy {
   returnObservable(): Observable<any> {
     return new Observable( observer => {
       let contador = 0;
+      let resp: any;
 
       const intervalo = setInterval(() => {
         contador += 1;
-        const salida = {
+        resp = {
           value: contador
         };
 
-        observer.next(salida);
-
-        // if (contador === 3) {
-        //   clearInterval(intervalo);
-        //   observer.complete();
-        // }
-
-        // if (contador === 2) {
-        //   //clearInterval(intervalo);
-        //   observer.error('Auxilio!!!');
-        // }
-
+        observer.next(resp);
 
       }, 1000);
     }).pipe(
-      map(resp => resp.value),
-      filter((value, index) => {
+      map((resp: any) => resp.value),
+      filter((value: any, index) => {
         if ((value % 2) === 1) {
           return true;
         } else {
           return false;
         }
-
       })
     );
-
   }
-
 }
