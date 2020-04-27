@@ -12,6 +12,9 @@ import { IncrementerComponent } from '../custom/incrementer/incrementer.componen
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { ProfileComponent } from './profile/profile.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -22,7 +25,8 @@ import { RxjsComponent } from './rxjs.component';
         IncrementerComponent,
         AccountSettingsComponent,
         PromisesComponent,
-        RxjsComponent
+        RxjsComponent,
+        ProfileComponent
     ],
     exports: [
         DashboardComponent,
@@ -34,7 +38,9 @@ import { RxjsComponent } from './rxjs.component';
         SharedModule,
         FormsModule,
         ChartsModule,
-        PAGES_ROUTES
+        PAGES_ROUTES,
+        PipesModule,
+        CommonModule
     ]
 })
 export class PagesModule { }

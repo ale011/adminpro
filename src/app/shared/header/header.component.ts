@@ -8,9 +8,12 @@ import { UserService } from 'src/app/services/index.service';
 })
 export class HeaderComponent implements OnInit {
 
+  public user;
+
   constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.user = this.userService.user;
   }
 
   logout() {
