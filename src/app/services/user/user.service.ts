@@ -93,7 +93,9 @@ export class UserService {
 
     return this.http.put(url, user).pipe(map( (resp: any) => {
 
-      this.saveStorage(resp.usuario._id, this.token, resp.usuario);
+      if ( user._id === this.user._id) {
+        this.saveStorage(resp.usuario._id, this.token, resp.usuario);
+      }
 
       swal('Updated user', this.user.name);
       return true;
@@ -102,7 +104,6 @@ export class UserService {
 
   public changeImage(file: File, id: string) {
     this.uploadFileService.uploadFile( file, 'usuarios', id).then((resp: any) => {
-      console.log('si anduvo', resp);
 
       this.user.img = resp.usuario.img;
       swal('Image updated', this.user.name, 'success');
@@ -111,5 +112,22 @@ export class UserService {
     }).catch(resp => {
       console.log('un error', resp);
     });
+  }
+
+  public loadUsers(from: number = 0) {
+    const url = SERVICE_URL + `/usuario?desde=${from}`;
+    return this.http.get(url);
+  }
+
+  public searchUsers(term: string) {
+    const url = SERVICE_URL + `/busqueda/coleccion/usuarios/${term}`;
+    return this.http.get( url ).pipe(
+      map((resp: any) => resp.usuarios)
+    );
+  }
+
+  public deleteUser(id: string) {
+    const url = SERVICE_URL + `/usuario/${id}?token=${this.token}`;
+    return this.http.delete( url );
   }
 }
