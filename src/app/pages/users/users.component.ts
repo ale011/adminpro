@@ -31,7 +31,6 @@ export class UsersComponent implements OnInit {
   public loadUsers() {
     this.loading = true;
     this.userService.loadUsers(this.from).subscribe((resp: any) => {
-      console.log('la respuesta: ', resp);
       this.totalRecords = resp.total;
       this.users = resp.usuarios;
       this.loading = false;
@@ -65,8 +64,6 @@ export class UsersComponent implements OnInit {
   }
 
   public deleteUser(user: User) {
-    console.log('voy a borrar...', user);
-
     if (user._id === this.userService.user._id) {
       swal('Cant delete youself', 'Cant delete yourself', 'error');
       return;
@@ -88,7 +85,6 @@ export class UsersComponent implements OnInit {
         });
       }
     });
-
   }
 
   public updateUser( user: User) {

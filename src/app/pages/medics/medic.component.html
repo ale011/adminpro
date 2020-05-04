@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-6">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">Sample Basic Forms</h3>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form #f="ngForm" (ngSubmit)="saveMedic(f)">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Medic name</label>
+                            <input [(ngModel)]="medic.nombre" name="nombre" type="text" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Hospital</label>
+                            <select (change)="changeHospital( $event.target.value )" [(ngModel)]="medic.hospital" name="hospital" class="form-control">
+                                <option value="">Select hospital</option>
+                                <option *ngFor="let hospital of hospitals" [value]="hospital._id">{{ hospital.name }}</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Save</button>
+                        <button type="button" [routerLink]="['/medics']"
+                            class="btn btn-inverse waves-effect waves-light">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+        <div class="card card-body">
+            <h4 class="box-title m-b-0">Hospital</h4>
+
+            <img *ngIf="hospital._id" [src]="hospital.img | image: 'hospital'" class="img-fluid">
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card card-body">
+            <h4 class="box-title m-b-0">{{medic.nombre}}</h4>
+            <img *ngIf="medic._id" (click)="showModal('medicos', medic._id)" [src]="medic.img | image: 'medico'" class="img-fluid pointer">
+        </div>
+    </div>
+</div>

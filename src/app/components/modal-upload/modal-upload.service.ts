@@ -23,8 +23,5 @@ export class ModalUploadService {
     this.oculto = '';
     this.id = id;
     this.type = type;
-
-
   }
-
 }
